@@ -9,15 +9,24 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.28",
     "mongoose-unique-validator": "^2.0.3",
-    "uuid": "^8.3.0",
-    "morgan-body": "^2.4.14"
+    "morgan-body": "^2.4.14",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "2.0.3",
+    "prettier": "^2.0.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/app.js",
+    "start": "kill -9 $(lsof -i:5000) && nodemon ./src/app.js",
     "test-deploy": "npm run build:ui && npm start",
     "build:ui": "cd ../frontend && npm run build && cp -a build ../backend",
     "deploy": "npm run build:ui && git add . && git commit -m 'new commit' && git push -u origin master"
